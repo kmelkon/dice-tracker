@@ -43,7 +43,7 @@ def main():
                     roll_result,
                     args.notation
                     )
-                save_session(session)
+            save_session(session)
         case "stats":
             if args.notation:
                 history = get_stats(session, args.notation)

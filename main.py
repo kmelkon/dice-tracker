@@ -2,6 +2,7 @@ import argparse
 
 from dice import parse_dice_notation, roll_dice
 from stats import History, Session, add_roll, get_stats
+from storage import load_session, save_session
 
 def print_history(history: History):
     print(f"Mean: {history.mean}")
@@ -29,7 +30,7 @@ def main():
     args = parser.parse_args()
 
     # args.command → "roll" or "stats"
-    session = Session()
+    session = load_session()
     match args.command:
         case "roll":
         # on each successful roll add_roll from stats.py
@@ -42,7 +43,7 @@ def main():
                     roll_result,
                     args.notation
                     )
-            print_history(get_stats(session))
+                save_session(session)
         case "stats":
             if args.notation:
                 history = get_stats(session, args.notation)

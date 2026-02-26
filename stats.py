@@ -63,12 +63,3 @@ def get_stats(session: Session, notation: str | None = None) -> History:
             roll_count=most_common[0][1]
         )
     )
-
-if __name__ == "__main__":
-    s = Session()
-    add_roll(s,roll_dice(parse_dice_notation("2d6")), "2d6")
-    add_roll(s,roll_dice(parse_dice_notation("2d6")), "2d6")
-    add_roll(s,roll_dice(parse_dice_notation("2d6")), "2d6")
-    add_roll(s,roll_dice(parse_dice_notation("2d20")), "2d20")
-    add_roll(s,roll_dice(parse_dice_notation("d4")), "d4")
-    print(get_stats(s))
